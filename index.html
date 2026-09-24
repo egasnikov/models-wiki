@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Palm & Peak Models Wiki</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#F6F8FA; --panel:#FFFFFF; --ink:#12212C; --ink-2:#4A5B68; --ink-3:#7A8A96;
+  --line:#DCE3E9; --navy:#123C55; --navy-2:#0E2F43; --teal:#00A9CE; --teal-bg:#E3F5FA;
+  --keep:#1E7F4F; --keep-bg:#E4F3EA; --update:#B7791F; --update-bg:#FBF1DC; --drop:#B0342B; --drop-bg:#F9E4E1; --decide:#5B4BB5; --decide-bg:#ECE8F8;
+  --res:#2E6F95; --off:#6B5B3E;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --sans:"IBM Plex Sans",-apple-system,Segoe UI,Helvetica,Arial,sans-serif;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){color-scheme:dark;
+  --bg:#0F171E; --panel:#162129; --ink:#E6EDF2; --ink-2:#AFBEC9; --ink-3:#7F909C; --line:#27343E; --navy:#1C4D6B; --navy-2:#0B1B26; --teal:#2FC1E2; --teal-bg:#0F2B35;
+  --keep:#5CC48E; --keep-bg:#12301F; --update:#E0A94A; --update-bg:#3A2C10; --drop:#F07A6E; --drop-bg:#3D1712; --decide:#A99BF0; --decide-bg:#241E45; --res:#6FB1D8; --off:#C8A874;}}
+:root[data-theme="dark"]{color-scheme:dark;
+  --bg:#0F171E; --panel:#162129; --ink:#E6EDF2; --ink-2:#AFBEC9; --ink-3:#7F909C; --line:#27343E; --navy:#1C4D6B; --navy-2:#0B1B26; --teal:#2FC1E2; --teal-bg:#0F2B35;
+  --keep:#5CC48E; --keep-bg:#12301F; --update:#E0A94A; --update-bg:#3A2C10; --drop:#F07A6E; --drop-bg:#3D1712; --decide:#A99BF0; --decide-bg:#241E45; --res:#6FB1D8; --off:#C8A874;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:14.5px;line-height:1.5}
+a{color:var(--teal)}
+.wrap{max-width:1240px;margin:0 auto;padding-inline:16px;padding-block:0 60px}
+header.hero{background:var(--navy-2);color:#E6EDF2;padding-block:34px 28px}
+header.hero .wrap{padding-block:0}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8FD8EA}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(28px,4vw,40px);margin:8px 0 6px;letter-spacing:-.01em;text-wrap:balance}
+.sub{color:#B9C8D3;max-width:70ch;margin:0}
+.stats{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.stat{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:10px 14px;min-width:120px}
+.stat b{display:block;font-family:var(--serif);font-size:24px;font-weight:600;font-variant-numeric:tabular-nums}
+.stat span{font-size:11.5px;color:#B9C8D3;text-transform:uppercase;letter-spacing:.08em}
+.layout{display:grid;grid-template-columns:220px 1fr;gap:28px;margin-top:26px}
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);align-self:start;padding-top:8px}
+nav.toc ol{list-style:none;margin:0;padding:0;border-left:2px solid var(--line)}
+nav.toc li a{display:block;padding:6px 12px;color:var(--ink-2);text-decoration:none;font-size:13px;border-left:2px solid transparent;margin-left:-2px}
+nav.toc li a:hover{color:var(--ink)} nav.toc li a.sub{padding-left:24px;font-size:12.5px}
+nav.toc li a.on{color:var(--navy);border-left-color:var(--teal);font-weight:600}
+@media (max-width:860px){.layout{grid-template-columns:1fr}nav.toc{position:static}nav.toc ol{display:flex;flex-wrap:wrap;gap:4px;border:0}nav.toc li a{border:1px solid var(--line);border-radius:999px;padding:4px 10px;margin:0}nav.toc li a.sub{display:none}}
+section{margin-top:44px;scroll-margin-top:16px}
+h2{font-family:var(--serif);font-weight:600;font-size:26px;margin:0 0 4px;letter-spacing:-.01em}
+h3{font-family:var(--serif);font-weight:600;font-size:19px;margin:28px 0 10px}
+.lead{color:var(--ink-2);max-width:72ch;margin:0 0 16px}
+.note{background:var(--teal-bg);border-left:3px solid var(--teal);padding:10px 14px;border-radius:0 6px 6px 0;margin:14px 0;max-width:80ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+.card .top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.card h4{margin:0;font-family:var(--serif);font-weight:600;font-size:17px;line-height:1.25}
+.card .meta{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);display:flex;flex-wrap:wrap;gap:4px 12px}
+.card p{margin:0;color:var(--ink-2);font-size:13.5px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:6px}
+.kpi{background:var(--bg);border-radius:6px;padding:6px 8px}
+.kpi b{display:block;font-size:15px;font-variant-numeric:tabular-nums;font-weight:600;color:var(--navy)}
+.kpi span{font-size:10.5px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em}
+.url{display:flex;gap:6px;align-items:center;font-family:var(--mono);font-size:12px;overflow:hidden}
+.url a{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.copy{border:1px solid var(--line);background:var(--panel);color:var(--ink-2);border-radius:4px;font:11px var(--mono);padding:2px 7px;cursor:pointer}
+.copy:hover{border-color:var(--teal);color:var(--teal)} .copy:focus-visible{outline:2px solid var(--teal)}
+.badge{display:inline-block;font:600 10.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:999px;white-space:nowrap}
+.b-keep{background:var(--keep-bg);color:var(--keep)} .b-update{background:var(--update-bg);color:var(--update)} .b-drop{background:var(--drop-bg);color:var(--drop)} .b-decide{background:var(--decide-bg);color:var(--decide)}
+.tag{display:inline-block;font:11px var(--mono);padding:2px 7px;border-radius:4px;border:1px solid var(--line);color:var(--ink-2)}
+.t-res{border-color:var(--res);color:var(--res)} .t-off{border-color:var(--off);color:var(--off)}
+.rec{font-size:13px;border-top:1px dashed var(--line);padding-top:8px;color:var(--ink)}
+.rec b{font-weight:600}
+.tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:14px 0}
+.tools input,.tools select{font:13px var(--sans);padding:7px 10px;border:1px solid var(--line);border-radius:6px;background:var(--panel);color:var(--ink)}
+.tools input{min-width:220px;flex:1}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;min-width:1100px;font-size:13px}
+td:first-child{min-width:230px}td:nth-child(8){min-width:150px}
+th{position:sticky;top:0;background:var(--navy);color:#fff;text-align:left;font-weight:500;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;padding:9px 10px;cursor:pointer;white-space:nowrap}
+td{padding:8px 10px;border-top:1px solid var(--line);vertical-align:top}
+td.mono{font-family:var(--mono);font-size:11.5px;white-space:nowrap}
+tr:hover td{background:var(--bg)}
+.count{font-family:var(--mono);font-size:12px;color:var(--ink-3)}
+.timeline{list-style:none;margin:0;padding:0;border-left:2px solid var(--line)}
+.timeline li{padding:4px 0 4px 16px;position:relative;font-size:13.5px}
+.timeline li::before{content:"";position:absolute;left:-6px;top:11px;width:8px;height:8px;border-radius:50%;background:var(--teal)}
+.timeline li .d{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);margin-right:8px}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px 16px}
+.box h4{margin:0 0 8px;font-family:var(--serif);font-size:16px;font-weight:600}
+.box ul{margin:0;padding-left:18px;color:var(--ink-2);font-size:13.5px} .box li{margin:4px 0}
+.tree{font-family:var(--mono);font-size:12.5px;white-space:pre;overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px 16px;line-height:1.55}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+footer{margin-top:50px;color:var(--ink-3);font-size:12px;font-family:var(--mono)}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+
+</head>
+<body>
+<header class="hero"><div class="wrap">
+  <div class="eyebrow">Palm &amp; Peak · GitHub Pages inventory · egasnikov.github.io</div>
+  <h1>Underwriting Models Wiki</h1>
+  <p class="sub">Every model, memorandum, dashboard and investor page deployed to GitHub Pages between 26 May and 24 Sep 2026, residential and offices, with what each one says and where it points. Public catalogue edition, compiled 24 Sep 2026 from the live repositories.</p>
+  <div class="stats">
+    <div class="stat"><b>13</b><span>repositories</span></div>
+    <div class="stat"><b>30</b><span>HTML pages</span></div>
+    <div class="stat"><b>12</b><span>with Pages live</span></div>
+    
+  </div>
+</div></header>
+
+<div class="wrap"><div class="layout">
+<nav class="toc"><ol>
+  <li><a href="#structure">0 · How the wiki is organised</a></li>
+  <li><a href="#index">1 · Master index</a></li>
+  <li><a href="#residential">2 · Residential</a></li>
+  <li><a class="sub" href="#res-live">Live deals</a></li>
+  <li><a class="sub" href="#res-programme">Programme &amp; buyer pages</a></li>
+  <li><a class="sub" href="#res-legacy">Legacy</a></li>
+  <li><a href="#offices">3 · Offices</a></li>
+  <li><a class="sub" href="#off-sky">Sky Tower family</a></li>
+  <li><a class="sub" href="#off-reem">Al Reem, other floors</a></li>
+  <li><a class="sub" href="#off-maryah">Al Maryah</a></li>
+  <li><a class="sub" href="#off-market">Market &amp; investor pack</a></li>
+  <li><a href="#corporate">4 · Corporate hubs</a></li>
+    <li><a href="#timeline">5 · Timeline</a></li>
+</ol></nav>
+
+<main>
+
+<section id="structure">
+  <h2>0 · How the wiki is organised</h2>
+  <p class="lead">Two axes. The first is the asset class (residential fix-and-flip and development, or offices). The second is the role of the page: a deal model, a programme or investor page, a market piece, or a corporate hub. Each page gets one card with the same fields, so the whole estate can be scanned in one pass.</p>
+  <div class="two">
+    <div class="box"><h4>Fields on every card</h4><ul>
+      <li><b>Live URL</b> with copy button; <b>repo / file</b> as it sits on GitHub.</li>
+      <li><b>Dates</b>: first commit → last commit, and the version label the page itself carries.</li>
+      <li><b>Visibility</b>: <span class="tag">listed</span> = linked from a hub or data room; <span class="tag">unlisted</span> = hash-named file shared only by direct link; <span class="tag">orphan</span> = nothing links to it.</li>
+      <li><b>Key figures</b> as the page computes them on load (base case).</li>
+          </ul></div>
+    <div class="box"><h4>Conventions on GitHub</h4><ul>
+      <li>URL pattern <code>https://egasnikov.github.io/&lt;repo&gt;/</code> serves <code>index.html</code>; other files by name.</li>
+      <li>One repo per asset since July (<code>al-barari-type-b</code>, <code>sienna-lakes</code>, <code>leaf-tower</code>...). Earlier work is grouped by theme (<code>flipping</code>, <code>sky-tower</code>, <code>adgm-flex-office</code>).</li>
+      <li><code>palm-peak</code> is the public hub and also hosts unlisted models (hash filenames) so they don't appear on the hub.</li>
+      <li>Free-plan Pages are public: anything with a URL is readable by anyone who has it. All pages carry "illustrative, not an offer".</li>
+    </ul></div>
+  </div>
+  </section>
+
+<section id="index">
+  <h2>1 · Master index</h2>
+  <p class="lead">All 30 pages in 28 rows (the duplicate repo is one row). Filter by sector, role or recommendation; click a column header to sort.</p>
+  <div class="tools">
+    <input id="q" type="search" placeholder="Search asset, repo, file, figures...">
+    <select id="fSector"><option value="">All sectors</option><option>Residential</option><option>Offices</option><option>Corporate</option></select>
+    <select id="fRole"><option value="">All roles</option><option>Deal model</option><option>Memorandum</option><option>Dashboard</option><option>Investor page</option><option>Deck</option><option>Market report</option><option>Buyer site</option><option>Hub</option><option>Data room</option><option>Business plan</option></select>
+        <span class="count" id="cnt"></span>
+  </div>
+  <div class="tablewrap"><table id="tbl"><thead><tr>
+    <th data-k="asset">Asset / page</th><th data-k="sector">Sector</th><th data-k="role">Role</th><th data-k="repo">Repo / file</th><th data-k="first">First</th><th data-k="last">Last</th><th data-k="vis">Visibility</th><th data-k="headline">Headline figure</th>
+  </tr></thead><tbody></tbody></table></div>
+</section>
+
+<section id="residential">
+  <h2>2 · Residential</h2>
+  <p class="lead">Villa fix-and-flip memoranda, one ground-up compound redevelopment, the villa programme investor page, and the AVRA buyer site. Ten pages across eight repos.</p>
+  <h3 id="res-live">2a · Live deals</h3>
+  <div class="grid" data-group="res-live"></div>
+  <h3 id="res-programme">2b · Programme and buyer-facing pages</h3>
+  <div class="grid" data-group="res-programme"></div>
+  <h3 id="res-legacy">2c · Legacy and duplicates</h3>
+  <div class="grid" data-group="res-legacy"></div>
+</section>
+
+<section id="offices">
+  <h2>3 · Offices</h2>
+  <p class="lead">Abu Dhabi Grade A floors, run as serviced offices. Sky Tower has the deepest history (40 commits since May); Radiant Square, Leaf Tower and Al Maryah were added in September as the pipeline widened. Eighteen pages across five repos.</p>
+  <h3 id="off-sky">3a · Sky Tower, Al Reem Island</h3>
+  <div class="note">Three generations coexist. <b>July 2026</b>: 48M purchase, 4-year levered model (index, dashboard, investor model v5). <b>August</b>: IC deck at 35M all-equity, 5-year. <b>September</b>: tenanted-floor model v6 at 46M base and a head-lease alternative (v4). Only the September pair plus the IC deck are referenced from the data room.</div>
+  <div class="grid" data-group="off-sky"></div>
+  <h3 id="off-reem">3b · Al Reem Island, other floors</h3>
+  <div class="grid" data-group="off-reem"></div>
+  <h3 id="off-maryah">3c · Al Maryah Island (ADGM Square)</h3>
+  <div class="grid" data-group="off-maryah"></div>
+  <h3 id="off-market">3d · Market pieces and investor pack</h3>
+  <div class="grid" data-group="off-market"></div>
+</section>
+
+<section id="corporate">
+  <h2>4 · Corporate hubs</h2>
+  <p class="lead">Two generations of the public Palm &amp; Peak page. The August hub (EN/RU) replaced the June site; the June site is still live and carries figures that no longer match the villa programme page.</p>
+  <div class="grid" data-group="corporate"></div>
+</section>
+
+<section id="timeline">
+  <h2>5 · Timeline</h2>
+  <p class="lead">Repo creation and the milestones that changed a headline number, from the commit log.</p>
+  <ul class="timeline" id="tl"></ul>
+</section>
+
+<footer>Source: GitHub API (repos, trees, commits) and each page rendered headless on 24 Sep 2026 to read the on-load base case. Figures are the pages' own; check against the xlsx before quoting.</footer>
+</main></div></div>
+
+<script>
+const BASE='https://egasnikov.github.io/';
+const P=[
+// ---------- RESIDENTIAL: live ----------
+{g:'res-live',asset:'Cordoba Residence, Al Sufouh 2',sector:'Residential',role:'Deal model',repo:'al-sufouh-cordoba',file:'index.html',first:'2026-09-23',last:'2026-09-24',ver:'Underwriting model v2.0 · Sep 2026',vis:'orphan',size:'75 KB',rec:'Keep',
+ desc:'Ground-up redevelopment of a 21-acre compound into 46 ultra-luxury estates and a clubhouse. Monthly cash flow with construction programme, absorption, Dubai escrow rules, land and construction debt, and a switchable LP/GP or single-investor structure. Every slider recomputes the model.',
+ kpis:[['2,002M','Profit to equity'],['44.1%','Equity IRR'],['924M','Peak equity'],['3.17x','Multiple'],['5,503M','GDV'],['1,004M','Land']],
+ note:'Newest page in the estate. Land at AED 1,080/sq ft of plot, GFA 967,664 sq ft, blended sale 6,137/sq ft. Working document, not linked from any hub yet.'},
+{g:'res-live',asset:'Al Barari · Jasmine Leaf, A Type',sector:'Residential',role:'Memorandum',repo:'al-barari-jasmine-leaf-a',file:'index.html',first:'2026-09-11',last:'2026-09-11',ver:'Sep 2026 · two financing scenarios',vis:'orphan',size:'50 KB',rec:'Keep',
+ desc:'Acquire a 7-bed A Type on a 37,717 sqft plot (2.3x a standard A Type) at 65M, full rebuild at 30M, extend from 16,902 to 25,000 sqft BUA, exit at 170M in 18 months. Exit priced on land and scale, anchored to The Reserve (121.2M, Apr 2025).',
+ kpis:[['50.4M','Net profit'],['27.2%','IRR'],['1.43x','Multiple'],['115.9M','Equity'],['43.5%','ROE']],
+ note:'Live page has no photos.'},
+{g:'res-live',asset:'Al Barari · The Residences, Type B',sector:'Residential',role:'Memorandum',repo:'al-barari-type-b',file:'index.html',first:'2026-07-10',last:'2026-09-04',ver:'Sep 2026 · all-equity / debt+equity switcher',vis:'listed',size:'1.1 MB',rec:'Keep',
+ desc:'6-bed shell-and-core corner villa on a 14,719 sqft plot, bought at 38M, 17M construction and fit-out, extended to 17,000 sqft GFA, exit 80M in 12 to 18 months. Comps: Desert Leaf 5 at 72M (May 2026), Jasmine Leaf 5 at 80M.',
+ kpis:[['16.6M','Net profit'],['21.0%','IRR'],['1.27x','Multiple'],['61.6M','Equity'],['26.9%','ROE']],
+ note:'Canonical Type B page. Linked from villa-programme. Six commits: Aug rebuild (absolute prices, 300K mgmt fee, comps), map removed 7 Aug, financing switcher 4 Sep.'},
+{g:'res-live',asset:'Sienna Lakes, Villa 13 (JGE)',sector:'Residential',role:'Memorandum',repo:'sienna-lakes',file:'index.html',first:'2026-09-02',last:'2026-09-03',ver:'Sep 2026 · 75% LTC debt + equity',vis:'orphan',size:'800 KB',rec:'Keep',
+ desc:'Golf-front Type Serena, 5 bed + maid, BUA 7,600 extended to 9,000 sqft, plot 9,992 sqft. Buy at 23.0M, 10M refit and 1,400 sqft extension over 10 months, sell at 45M (comps 45 to 50M). Levered case with senior debt at 50.9% of cost.',
+ kpis:[['6.0M','Net profit to equity'],['34.0%','Equity IRR'],['17.7M','Equity'],['1.34x','Multiple'],['38.9M','Break-even exit'],['5,000','Exit AED/sqft']],
+ note:'Photos embedded.'},
+// ---------- RESIDENTIAL: programme / buyer ----------
+{g:'res-programme',asset:'Palm & Peak Villa Programme',sector:'Residential',role:'Investor page',repo:'villa-programme',file:'index.html',first:'2026-09-02',last:'2026-09-02',ver:'Sep 2026',vis:'orphan',size:'924 KB',rec:'Update',
+ desc:'Investor information page for the new investor group: what we do, why bigger villas now, execution, track record (8 projects since Mar 2024, all sold), Al Barari case study, two open opportunities, terms, risks, documents.',
+ kpis:[['8','Projects completed'],['90.0M','Sales realised'],['30%','Average IRR'],['7.4','Months per cycle'],['~94M','Equity open']],
+ note:'Links to al-barari-type-b only. Jasmine Leaf A (11 Sep), Sienna Lakes and Cordoba are not linked from here.'},
+{g:'res-programme',asset:'AVRA · Private Villas at Sobha Hartland',sector:'Residential',role:'Buyer site',repo:'hartland-villas',file:'index.html',first:'2026-06-22',last:'2026-08-26',ver:'Aug 2026 (14 commits)',vis:'orphan',size:'39 KB + 22 photos (8.7 MB)',rec:'Your call',
+ desc:'Buyer-facing launch site for the AVRA villas: 1 signature residence (10,322 sqft) and 17 Collection villas from AED 25M, finished not off-plan. Vision, residences, gallery, location, viewing request.',
+ kpis:[['1 + 17','Villas'],['AED 25M','Collection from'],['38.5M','Prima (26 Aug)']],
+ note:'Only repo with real photos (uploaded from a local session). Last change: areas to permit BUA and Prima price 38.5M.'},
+// ---------- RESIDENTIAL: legacy ----------
+{g:'res-legacy',asset:'Al Barari Villa · Interactive Returns Dashboard (June)',sector:'Residential',role:'Dashboard',repo:'flipping',file:'dashboard.html',first:'2026-06-09',last:'2026-06-09',ver:'Jun 2026',vis:'orphan',size:'14 KB',rec:'Archive',
+ desc:'First deployed page for residential. Slider dashboard mirroring 20260609_AlBarari_TypeB_Underwriting_Model.xlsx: 42M purchase, 20M build, 100M exit, 55% LTC at 8.5%, 18-month cycle, 8% pref / 20% promote.',
+ kpis:[['28.2%','Project IRR'],['48.9%','Levered IRR'],['22.8%','LP net IRR'],['26.6M','Profit'],['70.4M','Total cost']],
+ note:'Every input is stale against the September Type B memo (38M / 17M / 80M).'},
+{g:'res-legacy',asset:'Alvorada 4, Arabian Ranches 1 (July memo)',sector:'Residential',role:'Memorandum',repo:'flipping',file:'alvorada.html',first:'2026-07-09',last:'2026-07-09',ver:'Jul 2026 · all-equity',vis:'orphan',size:'1.8 MB',rec:'Your call',
+ desc:'3-to-4 bed Emaar villa: buy 9.0M, 2.0M renovation with a 300 sqft extension, exit 16.0M in 6 to 12 months. Exit anchored to an identical villa that resold renovated at 16.0M (Apr 2026, DLD).',
+ kpis:[['3.6M','Net profit'],['30.1%','IRR'],['1.30x','Multiple'],['12.0M','Equity']],
+ note:'Full-price version with photos. An anonymised August copy sits in palm-peak/alvorada.html.'},
+{g:'res-legacy',asset:'Alvorada 4 (August public copy)',sector:'Residential',role:'Memorandum',repo:'palm-peak',file:'alvorada.html',first:'2026-08-12',last:'2026-08-12',ver:'Aug 2026 · prices anonymised',vis:'listed',size:'1.8 MB',rec:'Archive',
+ desc:'Same memorandum with purchase and renovation figures removed ("secured at the unrenovated market level") and a Margin on GDV tile instead of net profit. Linked from the public hub.',
+ kpis:[['30.1%','IRR'],['1.30x','Multiple'],['22.6%','Margin on GDV']],
+ note:'Duplicate of flipping/alvorada.html.'},
+{g:'res-legacy',asset:'Al Barari Type B (August public copy)',sector:'Residential',role:'Memorandum',repo:'palm-peak',file:'albarari.html',first:'2026-08-12',last:'2026-08-12',ver:'Aug 2026 · all-equity, prices anonymised',vis:'listed',size:'1.1 MB',rec:'Archive',
+ desc:'August version of the Type B memo without the entry price ("secured below the asking price and below the competing bids") and without the September financing switcher.',
+ kpis:[['21.0%','IRR'],['1.27x','Multiple'],['20.7%','Margin on GDV']],
+ note:'Duplicate of al-barari-type-b/index.html, one version behind.'},
+// ---------- OFFICES: Sky Tower ----------
+{g:'off-sky',asset:'Sky Tower · Tenanted Floor Acquisition, model v6',sector:'Offices',role:'Deal model',repo:'sky-tower',file:'m-030dcbfe8d59d5be.html',first:'2026-09-03',last:'2026-09-10',ver:'Vacancy-timing model v6 · Sep 2026',vis:'listed',size:'1.3 MB',rec:'Update',
+ desc:'Full floor bought subject to the sitting lease (about 1.6M p.a. to Dec 2027) at 46.0M base (2,000/sq ft). Prices three vacancy paths: early surrender at 3 or 6 months with compensation, or lease run-off. Then fit-out, serviced-office trading, sale on a stabilised yield.',
+ kpis:[['66.6M','LP equity'],['26.9%','LP IRR'],['1.65x','LP multiple'],['109.7M','LP distributions'],['16.2%','NOI yield Y2']],
+ note:'Current Sky Tower model, linked from the data room (C section). The <title> tag still says "AED 35M".'},
+{g:'off-sky',asset:'Sky Tower · IC presentation (39 slides)',sector:'Offices',role:'Deck',repo:'sky-tower',file:'ic-314d371c16b2b515.html',first:'2026-08-26',last:'2026-09-11',ver:'v1.0 · Aug 2026',vis:'listed',size:'159 KB',rec:'Update',
+ desc:'Investment Committee presentation for a private family office: acquisition and repositioning of the floor at 35.0M (1,522/sq ft), all-equity, 5-year hold. Every projection traces to the monthly model in the appendix. Arrow keys navigate; Ctrl/Cmd+P prints.',
+ kpis:[['35.0M','Purchase price'],['52.8M','Total equity'],['20.2%','NOI yield Y2'],['24.9%','Investor IRR'],['2.96x','Multiple']],
+ note:'Linked from the data room and quoted in the CRE deck ("24.9% / 2.96x LP base case"). Sits at 35M while model v6 runs 46M.'},
+{g:'off-sky',asset:'Sky Tower · Full-Floor Head-Lease model v4',sector:'Offices',role:'Deal model',repo:'sky-tower',file:'unlisted',first:'2026-09-10',last:'2026-09-18',ver:'Serviced-floor operating model v4 · Sep 2026',vis:'unlisted',size:'55 KB',rec:'Keep',
+ desc:'Alternative to buying: take the sitting tenant’s lease by assignment at 1,300/sqm (2.78M p.a.) plus 3.0M compensation, 10-year term, 3 months rent-free, 5% escalation. Fit out and sell at 3,500/desk/month. Investor takes 70% of NOI after a 5% fee, no residual.',
+ kpis:[['19.5M','Investor equity'],['21.5%','Investor IRR'],['3.05x','Multiple'],['32.8%','Project IRR'],['60.0%','NOI margin Y3']],
+ note:'Earlier versions were replaced between 10 and 18 Sep; only v4 remains. Unlisted by design.'},
+{g:'off-sky',asset:'Sky Tower · Investment Opportunity landing (July)',sector:'Offices',role:'Investor page',repo:'sky-tower',file:'index.html',first:'2026-05-26',last:'2026-07-29',ver:'Jul 2026',vis:'orphan',size:'53 KB',rec:'Archive',
+ desc:'Scroll-page pitch with slideshow mode: opportunity, asset (2,140 sqm, 80 floors, built 2010), tenants, competition, business model, financials, exit, structure, risks. Purchase at 48M vs 55 to 60M market.',
+ kpis:[['61.9M','Total equity'],['28.2%','LP IRR (4y)'],['2.44x','LP multiple'],['8%','Preferred return']],
+ note:'First page ever deployed (26 May). Terms superseded twice since.'},
+{g:'off-sky',asset:'Sky Tower · Interactive Returns Dashboard (July)',sector:'Offices',role:'Dashboard',repo:'sky-tower',file:'dashboard.html',first:'2026-07-09',last:'2026-07-29',ver:'Jul 2026 · levered 70% LTV / all-equity toggle',vis:'listed',size:'16 KB',rec:'Archive',
+ desc:'Slider dashboard mirroring Sky_Tower_Levered_4Y_Model_v2.xlsx: 48M purchase, 350/sqft renovation, 70% LTV at 12%, 3,500/desk, 95% occupancy, 9% exit cap, 4-year hold, with an exit-cap sensitivity table.',
+ kpis:[['44.2%','LP IRR'],['3.69x','LP multiple'],['27.8M','LP equity'],['102.8M','Distributions'],['2.40x','Avg DSCR']],
+ note:'Still linked from the public hub as "live deal dashboard". Headline 44.2% is from a structure no longer proposed.'},
+{g:'off-sky',asset:'Sky Tower · Interactive Investment Model v5 (July)',sector:'Offices',role:'Deal model',repo:'sky-tower',file:'investor-model.html',first:'2026-07-29',last:'2026-07-29',ver:'Model v5 · Jul 2026 · confidential',vis:'orphan',size:'1.3 MB',rec:'Archive',
+ desc:'Predecessor of v6: 3,200/desk, 550/sq ft capex (13.3M), 95% occupancy, 9 months no revenue, exit year 2 at 10% cap, LP 70 / GP 30 on income and residual, optional 9% corporate tax.',
+ kpis:[['67.0M','LP equity'],['25.2%','LP IRR'],['1.55x','LP multiple'],['104.1M','Distributions']],
+ note:'Same base equity as v6 but without the vacancy-timing logic.'},
+{g:'off-sky',asset:'st-reem-a7f3k2 (duplicate repo)',sector:'Offices',role:'Dashboard',repo:'st-reem-a7f3k2',file:'index.html + dashboard.html + investor-model.html',first:'2026-07-29',last:'2026-07-29',ver:'Jul 2026 copy',vis:'orphan',size:'1.3 MB',rec:'Delete',
+ desc:'Byte-identical copy of the July Sky Tower trio, made on 29 Jul for an obscured URL. GitHub Pages was never switched on, so no URL has ever resolved.',
+ kpis:[['0','Pages served'],['1','Commit']],
+ note:'The only repo without Pages enabled.'},
+// ---------- OFFICES: Al Reem other ----------
+{g:'off-reem',asset:'Radiant Square · Full-Floor Acquisition, model v2',sector:'Offices',role:'Deal model',repo:'adgm-flex-office',file:'unlisted',first:'2026-09-15',last:'2026-09-15',ver:'Underwriting model v2 (v2.1 restyle) · Sep 2026',vis:'unlisted',size:'888 KB',rec:'Keep',
+ desc:'Buy a 12,368 sq ft certificated floor (11,863 sq ft lettable suites) at 27.0M, fit out and run as serviced offices on the RICE layout (7 suites, 165 desks). 5-year unlevered hold, sale on stabilised yield.',
+ kpis:[['37.3M','Investor equity'],['23.6%','Investor IRR'],['2.59x','Multiple'],['29.8%','Project IRR'],['20.6%','NOI yield on cost']],
+ note:'This is the structure the office-acquisition-underwriting skill reproduces (Radiant Square v2.1). An earlier copy in palm-peak was removed the same day.'},
+{g:'off-reem',asset:'Radiant Square · 6th Floor Head-Lease, model',sector:'Offices',role:'Deal model',repo:'palm-peak',file:'unlisted',first:'2026-09-08',last:'2026-09-08',ver:'Header says v1; commits reached v5 · Sep 2026',vis:'unlisted',size:'880 KB',rec:'Update',
+ desc:'Lease the same 12,368 sq ft floor at 1.9M p.a. asking instead of buying it. Bottom-up core opex, head-lease broker fee, 12-month oversight fee, rent-free slider. Investor funds fit-out and working capital.',
+ kpis:[['9.4M','Investor equity'],['20.9%','Investor IRR'],['2.27x','Multiple'],['33.2%','Project IRR'],['58.1%','NOI margin Y3']],
+ note:'Five same-day commits (v2 opex build-up, v3 fees, v4 rent-free slider, v5 deal terms restyle). Page label never moved past v1.'},
+{g:'off-reem',asset:'Leaf Tower · Level 58 Rooftop Head-Lease, model v3',sector:'Offices',role:'Deal model',repo:'leaf-tower',file:'index.html',first:'2026-09-10',last:'2026-09-11',ver:'Serviced-floor operating model v3 · Sep 2026',vis:'orphan',size:'55 KB',rec:'Keep',
+ desc:'Rooftop 2,500 sqm floor with curved glazing and skylight roof, offered shell and core at 7.5M p.a. (Property Finder 106411896, MAAM Properties). Full fit-out at 550/sq ft, 10-year hold, investor 70% of NOI after fee.',
+ kpis:[['17.8M','Investor equity'],['20.6%','Investor IRR'],['2.92x','Multiple'],['33.3%','Project IRR'],['7,385','AED/sqm/yr price']],
+ note:'Eight upload commits in two days; only the final index.html remains. Embeds the landlord video link.'},
+// ---------- OFFICES: Al Maryah ----------
+{g:'off-maryah',asset:'Al Maryah Island · Full-Floor Serviced Office Business Plan',sector:'Offices',role:'Business plan',repo:'adgm-flex-office',file:'unlisted',first:'2026-09-09',last:'2026-09-09',ver:'Business plan for the landlord · Sep 2026',vis:'unlisted',size:'356 KB',rec:'Keep',
+ desc:'Landlord-facing plan for a 2,500 sqm floor at 7.5M p.a., 10-year term with 6 months rent-free: what the landlord receives over the term, what the operator invests, and how well the rent is covered by operations at stabilisation.',
+ kpis:[['90.6M','Rent to landlord, term'],['17.2M','Revenue Y3'],['6.8M','NOI after rent Y3'],['1.78x','Rent cover'],['19.1M','Operator investment'],['25.4% / 3.50x','Operator IRR / multiple']],
+ note:'Written from the landlord’s side, unlike every other page. Supersedes the 7-year lease model below.'},
+{g:'off-maryah',asset:'Al Maryah Island · ADGM Square Head-Lease, model v1',sector:'Offices',role:'Deal model',repo:'palm-peak',file:'unlisted',first:'2026-09-02',last:'2026-09-02',ver:'Serviced-floor operating model v1 · Sep 2026',vis:'unlisted',size:'49 KB',rec:'Archive',
+ desc:'Investor-side model of the same floor on a 7-year head lease at 3,000/sqm with no rent-free and 5% escalation, 3,700/desk. The page itself concludes the structure sits below a 12% hurdle; the operator takes 65% of total profit.',
+ kpis:[['21.5M','Investor equity'],['7.0%','Investor IRR'],['1.36x','Multiple'],['17.3%','Project IRR'],['38.1%','NOI margin Y3']],
+ note:'Three same-day commits (operator anonymised, desk-rate sensitivity). Replaced by the 10-year business plan a week later.'},
+// ---------- OFFICES: market & pack ----------
+{g:'off-market',asset:'ADGM Flex-Office · Investment Thesis & Floor Model',sector:'Offices',role:'Investor page',repo:'adgm-flex-office',file:'index.html',first:'2026-06-19',last:'2026-07-03',ver:'Jul 2026 · illustrative, editable',vis:'listed',size:'234 KB',rec:'Update',
+ desc:'Four tabs: thesis (Grade A shortage, no competing stock until the 2030s), supply and demand (451k sqm cumulative shortfall by 2031), an editable floor model with levered / all-equity toggle, and risk. Quotes JLL/CBRE Q1 2026 and Savills.',
+ kpis:[['~98%','ADGM occupancy'],['0.1%','Prime vacancy'],['+30%','Rent growth YoY'],['~451k sqm','Shortfall by 2031']],
+ note:'Linked from the public hub. Data one quarter behind the flex report and CRE deck (C&W H1 2026).'},
+{g:'off-market',asset:'UAE Flexible Office Market 2026-2031',sector:'Offices',role:'Market report',repo:'adgm-flex-office',file:'uae-flex-report.html',first:'2026-07-09',last:'2026-09-02',ver:'Sep 2026 update of the Jul 2026 report',vis:'listed',size:'246 KB',rec:'Keep',
+ desc:'Public market report under your name: Dubai and Abu Dhabi benchmarked against London and New York, growth drivers, three 2031 scenarios, pricing economics, operator quality, investment implications. Sources JLL, CBRE, Knight Frank, Savills, C&W, Instant, IWG, DIFC, ADGM.',
+ kpis:[['0.7% / ~1%','Prime vacancy DXB / AUH'],['+19% / +32%','Grade A rent growth'],['~4-6%','UAE flex penetration']],
+ note:'Document A3 in the data room. Also the piece behind the LinkedIn content.'},
+{g:'off-market',asset:'Palm & Peak Commercial · Investor Presentation',sector:'Offices',role:'Deck',repo:'palm-peak',file:'cre-deck-9733fdf3ffb5ac2a.html',first:'2026-08-26',last:'2026-09-02',ver:'22 slides · Sep 2026',vis:'listed',size:'176 KB',rec:'Keep',
+ desc:'Grade A office floors in Dubai and Abu Dhabi, operated for value-add returns: thesis, operating model, Emaar Square track record (+54.6% value created, 90.8% leased), pipeline, Sky Tower Floor 38, market, structure, risks, next steps.',
+ kpis:[['+54.6%','Value created, floor 1'],['609 vs 340','AED/sqft achieved vs shell'],['90.8%','Leased, Emaar Sq B1'],['24.9% / 2.96x','Sky Tower LP base']],
+ note:'Document A1 in the data room. Abu Dhabi figures aligned to C&W H1 2026 on 2 Sep. Quotes the 35M Sky Tower case.'},
+{g:'off-market',asset:'Palm & Peak Commercial · Data Room index',sector:'Offices',role:'Data room',repo:'palm-peak',file:'unlisted',first:'2026-08-26',last:'2026-09-02',ver:'Sep 2026',vis:'unlisted',size:'9 KB',rec:'Keep',
+ desc:'Index page for the commercial data room: A. Platform (6 docs), Emaar Square track record, C. Sky Tower live transaction (IC deck + model v6), pipeline, SPV structure. Links to 4 GitHub pages and 8 Google Drive files; NDA-only documents removed 2 Sep.',
+ kpis:[['4','GitHub pages linked'],['8','Drive files linked']],
+ note:'The one page to send an investment team. Depends on Drive sharing permissions staying open on those 8 files.'},
+// ---------- CORPORATE ----------
+{g:'corporate',asset:'Palm & Peak hub (EN / RU)',sector:'Corporate',role:'Hub',repo:'palm-peak',file:'index.html',first:'2026-08-12',last:'2026-09-02',ver:'Sep 2026',vis:'listed',size:'18 KB',rec:'Update',
+ desc:'"Villas we flip. Offices we run." Bilingual public page: two strategies, AI operating stack (zero employees, ~850 broker messages a week, 2,000+ brokers in CRM), live deal links.',
+ kpis:[['15-25%','Return per flip cycle'],['+54.6%','Emaar Square exit vs cost'],['90.8%','Leased, Emaar Sq B1'],['2,000+','Brokers in CRM']],
+ note:'Links to albarari.html, alvorada.html (its own August copies), adgm-flex-office/ and sky-tower/dashboard.html (July).'},
+{g:'corporate',asset:'Palm & Peak investor site (June)',sector:'Corporate',role:'Hub',repo:'palmpeak-site',file:'index.html',first:'2026-06-12',last:'2026-06-12',ver:'Jun 2026',vis:'orphan',size:'35 KB',rec:'Delete',
+ desc:'Apartment-era positioning: "We unlock hidden value in Dubai’s premium residences", 31% average project IRR, 6-month cycles, David Israelashvili named as Co-Founder & COO, Book a Call CTA.',
+ kpis:[['31%','Average IRR'],['91M','Sales, 12 months'],['10+','Projects'],['6 mo','Cycle']],
+ note:'Contradicts the villa programme page (8 projects, 90M, 30%). Nothing links here.'}
+];
+
+const TL=[
+['2026-05-26','sky-tower created; Sky Tower investment opportunity page goes live (48M, 4-year levered).'],
+['2026-06-09','flipping created; Al Barari Type B June dashboard (42M / 20M / 100M).'],
+['2026-06-12','palmpeak-site: investor site redesign (31% IRR, 91M sales).'],
+['2026-06-19','adgm-flex-office created: ADGM thesis + floor model; levered / all-equity toggle added 22 Jun.'],
+['2026-06-22','hartland-villas: AVRA site with 22 photos; pricing and naming updates through 26 Aug.'],
+['2026-07-09','flipping: Alvorada 4 memorandum. sky-tower: interactive returns dashboard. adgm-flex-office: UAE flex report (public version).'],
+['2026-07-10','al-barari-type-b created (first standalone deal repo).'],
+['2026-07-29','sky-tower: investor model v5. st-reem-a7f3k2 duplicate created, Pages never enabled.'],
+['2026-08-06','al-barari-type-b rebuilt: August model, absolute exit prices, 300K management fee, comps; map removed 7 Aug.'],
+['2026-08-12','palm-peak hub created (EN/RU) with anonymised Al Barari and Alvorada copies.'],
+['2026-08-26','sky-tower: IC deck (35M, 24.9% / 2.96x). palm-peak: CRE deck + data room index.'],
+['2026-09-02','villa-programme and sienna-lakes created. Al Maryah lease model v1. Flex report and deck moved to C&W H1 2026. NDA-only documents removed from data room.'],
+['2026-09-03','sky-tower: 46M acquisition price set as base scenario (model v6).'],
+['2026-09-04','al-barari-type-b: all-equity / debt+equity financing switcher.'],
+['2026-09-08','palm-peak: Radiant Square 6th floor lease model, v1 to v5 in one day.'],
+['2026-09-09','adgm-flex-office: Al Maryah business plan for the landlord.'],
+['2026-09-10','leaf-tower created (L58 head-lease v3). sky-tower: head-lease model series begins (st-*).'],
+['2026-09-11','al-barari-jasmine-leaf-a live (no photos, browser-assembled deploy).'],
+['2026-09-15','adgm-flex-office: Radiant Square acquisition model v2 and v2.1 restyle; ra-* copy deleted from palm-peak.'],
+['2026-09-18','sky-tower: head-lease model v4 replaces earlier st-* versions.'],
+['2026-09-23','al-sufouh-cordoba created; Cordoba Residence model v2.0, last upload 24 Sep.'],
+];
+
+function recClass(r){return r==='Keep'?'b-keep':r==='Update'?'b-update':r==='Your call'?'b-decide':'b-drop'}
+function url(p){return BASE+p.repo+'/'+(p.file==='index.html'?'':p.file.split(' ')[0])}
+function copyBtn(t){const b=document.createElement('button');b.className='copy';b.textContent='copy';b.onclick=()=>{navigator.clipboard.writeText(t).then(()=>{b.textContent='copied';setTimeout(()=>b.textContent='copy',1200)}).catch(()=>{const r=document.createRange();r.selectNodeContents(b.previousSibling);getSelection().removeAllRanges();getSelection().addRange(r)})};return b}
+function card(p){
+  const c=document.createElement('article');c.className='card';
+  const u=url(p);
+  c.innerHTML=`<div class="top"><h4>${p.asset}</h4></div>
+  <div class="meta"><span class="tag ${p.sector==='Residential'?'t-res':p.sector==='Offices'?'t-off':''}">${p.sector}</span><span class="tag">${p.role}</span><span class="tag">${p.vis}</span><span>${p.first} → ${p.last}</span><span>${p.size}</span></div>
+  ${p.vis==='unlisted'?'<div class="url">unlisted page, shared by direct link only</div>':'<div class="url"><a href="'+u+'" target="_blank" rel="noopener">'+u.replace('https://','')+'</a></div>'}
+  <div class="meta"><span>repo: ${p.repo}</span><span>file: ${p.vis==='unlisted'?'unlisted':p.file}</span><span>${p.ver}</span></div>
+  <p>${p.desc}</p>
+  <div class="kpis">${p.kpis.map(k=>`<div class="kpi"><b>${k[0]}</b><span>${k[1]}</span></div>`).join('')}</div>
+  <p>${p.note}</p>`;
+  if(p.vis!=='unlisted')c.querySelector('.url').appendChild(copyBtn(u));
+  return c;
+}
+P.forEach(p=>document.querySelector(`[data-group="${p.g}"]`).appendChild(card(p)));
+
+// table
+let sortK='last',sortD=-1;
+const tb=document.querySelector('#tbl tbody');
+function render(){
+  const q=document.getElementById('q').value.toLowerCase(),s=fSector.value,r=fRole.value;
+  let rows=P.map(p=>({...p,headline:p.kpis[0][0]+' '+p.kpis[0][1]})).filter(p=>(!s||p.sector===s)&&(!r||p.role===r)&&(!q||JSON.stringify(p).toLowerCase().includes(q)));
+  rows.sort((a,b)=>(a[sortK]>b[sortK]?1:a[sortK]<b[sortK]?-1:0)*sortD);
+  tb.innerHTML=rows.map(p=>`<tr><td>${p.vis==='unlisted'?p.asset:'<a href="'+url(p)+'" target="_blank" rel="noopener">'+p.asset+'</a>'}</td><td>${p.sector}</td><td>${p.role}</td><td class="mono">${p.repo}/<br>${p.vis==='unlisted'?'unlisted':p.file}</td><td class="mono">${p.first}</td><td class="mono">${p.last}</td><td>${p.vis}</td><td>${p.headline}</td></tr>`).join('');
+  cnt.textContent=rows.length+' of '+P.length+' pages';
+}
+['q','fSector','fRole'].forEach(id=>document.getElementById(id).addEventListener('input',render));
+document.querySelectorAll('#tbl th').forEach(th=>th.onclick=()=>{const k=th.dataset.k;sortD=(sortK===k)?-sortD:1;sortK=k;render()});
+render();
+
+// timeline
+tl.innerHTML=TL.map(t=>`<li><span class="d">${t[0]}</span>${t[1]}</li>`).join('');
+
+// toc highlight
+const links=[...document.querySelectorAll('nav.toc a')];
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.toggle('on',l.getAttribute('href')==='#'+e.target.id))}})},{rootMargin:'-10% 0px -80% 0px'});
+document.querySelectorAll('section, h3[id]').forEach(s=>obs.observe(s));
+</script>
+
+</body>
+</html>
