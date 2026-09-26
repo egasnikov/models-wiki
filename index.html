@@ -98,11 +98,11 @@ footer{margin-top:50px;color:var(--ink-3);font-size:12px;font-family:var(--mono)
 <header class="hero"><div class="wrap">
   <div class="eyebrow">Palm &amp; Peak · GitHub Pages inventory · egasnikov.github.io</div>
   <h1>Underwriting Models Wiki</h1>
-  <p class="sub">Every model, memorandum, dashboard and investor page deployed to GitHub Pages between 26 May and 24 Sep 2026, residential and offices, with what each one says and where it points. Public catalogue edition, compiled 24 Sep 2026 from the live repositories.</p>
+  <p class="sub">Every model, memorandum, dashboard and investor page deployed to GitHub Pages between 26 May and 26 Sep 2026, residential and offices, with what each one says and where it points. Public catalogue edition, compiled 24 Sep 2026 from the live repositories.</p>
   <div class="stats">
-    <div class="stat"><b>13</b><span>repositories</span></div>
-    <div class="stat"><b>30</b><span>HTML pages</span></div>
-    <div class="stat"><b>12</b><span>with Pages live</span></div>
+    <div class="stat"><b>14</b><span>repositories</span></div>
+    <div class="stat"><b>31</b><span>HTML pages</span></div>
+    <div class="stat"><b>13</b><span>with Pages live</span></div>
     
   </div>
 </div></header>
@@ -147,7 +147,7 @@ footer{margin-top:50px;color:var(--ink-3);font-size:12px;font-family:var(--mono)
 
 <section id="index">
   <h2>1 · Master index</h2>
-  <p class="lead">All 30 pages in 28 rows (the duplicate repo is one row). Filter by sector, role or recommendation; click a column header to sort.</p>
+  <p class="lead">All 31 pages in 29 rows (the duplicate repo is one row). Filter by sector, role or recommendation; click a column header to sort.</p>
   <div class="tools">
     <input id="q" type="search" placeholder="Search asset, repo, file, figures...">
     <select id="fSector"><option value="">All sectors</option><option>Residential</option><option>Offices</option><option>Corporate</option></select>
@@ -161,7 +161,7 @@ footer{margin-top:50px;color:var(--ink-3);font-size:12px;font-family:var(--mono)
 
 <section id="residential">
   <h2>2 · Residential</h2>
-  <p class="lead">Villa fix-and-flip memoranda, one ground-up compound redevelopment, the villa programme investor page, and the AVRA buyer site. Ten pages across eight repos.</p>
+  <p class="lead">Villa and apartment fix-and-flip memoranda, one ground-up compound redevelopment, the villa programme investor page, and the AVRA buyer site. Eleven pages across nine repos.</p>
   <h3 id="res-live">2a · Live deals</h3>
   <div class="grid" data-group="res-live"></div>
   <h3 id="res-programme">2b · Programme and buyer-facing pages</h3>
@@ -203,6 +203,10 @@ footer{margin-top:50px;color:var(--ink-3);font-size:12px;font-family:var(--mono)
 const BASE='https://egasnikov.github.io/';
 const P=[
 // ---------- RESIDENTIAL: live ----------
+{g:'res-live',asset:'Beach Mansion T2, Unit 1602 (Emaar Beachfront)',sector:'Residential',role:'Memorandum',repo:'beach-mansion-1602',file:'index.html',first:'2026-09-26',last:'2026-09-26',ver:'Sep 2026 · JV waterfall, 9-month hold',vis:'orphan',size:'20 KB',rec:'Keep',
+ desc:'3-bed, 2,234 sq ft apartment bought at 7.5M including a 1.5M post-handover payment plan, 850K renovation, exit 10.5M. The investor funds 100% under a JV; six-tier waterfall (10% pref, operator catch-up, 75/25, 70/30, 50/50) tested on invested capital excluding the payment plan. Sliders and exit-versus-hold sensitivity grids recompute live.',
+ kpis:[['1.36M','Gross profit'],['25.1%','Project IRR'],['1.18x','Multiple'],['1.05M','Investor share'],['19.3%','Investor IRR'],['385K','Operator total']],
+ note:'Base case hold moved from 6 to 9 months on 26 Sep (at 6 months: 39.9% project IRR). Live page has no photos.'},
 {g:'res-live',asset:'Cordoba Residence, Al Sufouh 2',sector:'Residential',role:'Deal model',repo:'al-sufouh-cordoba',file:'index.html',first:'2026-09-23',last:'2026-09-24',ver:'Underwriting model v2.0 · Sep 2026',vis:'orphan',size:'75 KB',rec:'Keep',
  desc:'Ground-up redevelopment of a 21-acre compound into 46 ultra-luxury estates and a clubhouse. Monthly cash flow with construction programme, absorption, Dubai escrow rules, land and construction debt, and a switchable LP/GP or single-investor structure. Every slider recomputes the model.',
  kpis:[['2,002M','Profit to equity'],['44.1%','Equity IRR'],['924M','Peak equity'],['3.17x','Multiple'],['5,503M','GDV'],['1,004M','Land']],
@@ -346,6 +350,7 @@ const TL=[
 ['2026-09-15','adgm-flex-office: Radiant Square acquisition model v2 and v2.1 restyle; ra-* copy deleted from palm-peak.'],
 ['2026-09-18','sky-tower: head-lease model v4 replaces earlier st-* versions.'],
 ['2026-09-23','al-sufouh-cordoba created; Cordoba Residence model v2.0, last upload 24 Sep.'],
+['2026-09-26','beach-mansion-1602 created: Beach Mansion T2 1602 JV memorandum (10.5M exit); base hold set to 9 months the same evening.'],
 ];
 
 function recClass(r){return r==='Keep'?'b-keep':r==='Update'?'b-update':r==='Your call'?'b-decide':'b-drop'}
