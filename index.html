@@ -174,7 +174,7 @@ footer{margin-top:50px;color:var(--ink-3);font-size:12px;font-family:var(--mono)
   <h2>3 · Offices</h2>
   <p class="lead">Abu Dhabi Grade A floors, run as serviced offices. Sky Tower has the deepest history (40 commits since May); Radiant Square, Leaf Tower and Al Maryah were added in September as the pipeline widened. Eighteen pages across five repos.</p>
   <h3 id="off-sky">3a · Sky Tower, Al Reem Island</h3>
-  <div class="note">Three generations coexist. <b>July 2026</b>: 48M purchase, 4-year levered model (index, dashboard, investor model v5). <b>August</b>: IC deck at 35M all-equity, 5-year. <b>September</b>: tenanted-floor model v6 at 46M base and a head-lease alternative (v4). Only the September pair plus the IC deck are referenced from the data room.</div>
+  <div class="note">Three generations coexist. <b>July 2026</b>: 48M purchase, 4-year levered model (index, dashboard, investor model v5). <b>August</b>: IC deck at 35M all-equity, 5-year. <b>September</b>: vacant-floor model v7 at 48M (EN + RU, replaced the tenanted v6 on 30 Sep) and a head-lease alternative (v4). Only the September pair plus the IC deck are referenced from the data room.</div>
   <div class="grid" data-group="off-sky"></div>
   <h3 id="off-reem">3b · Al Reem Island, other floors</h3>
   <div class="grid" data-group="off-reem"></div>
@@ -250,10 +250,14 @@ const P=[
  kpis:[['21.0%','IRR'],['1.27x','Multiple'],['20.7%','Margin on GDV']],
  note:'Duplicate of al-barari-type-b/index.html, one version behind.'},
 // ---------- OFFICES: Sky Tower ----------
-{g:'off-sky',asset:'Sky Tower · Tenanted Floor Acquisition, model v6',sector:'Offices',role:'Deal model',repo:'sky-tower',file:'m-030dcbfe8d59d5be.html',first:'2026-09-03',last:'2026-09-10',ver:'Vacancy-timing model v6 · Sep 2026',vis:'listed',size:'1.3 MB',rec:'Update',
- desc:'Full floor bought subject to the sitting lease (about 1.6M p.a. to Dec 2027) at 46.0M base (2,000/sq ft). Prices three vacancy paths: early surrender at 3 or 6 months with compensation, or lease run-off. Then fit-out, serviced-office trading, sale on a stabilised yield.',
- kpis:[['66.6M','LP equity'],['26.9%','LP IRR'],['1.65x','LP multiple'],['109.7M','LP distributions'],['16.2%','NOI yield Y2']],
- note:'Current Sky Tower model, linked from the data room (C section). The <title> tag still says "AED 35M".'},
+{g:'off-sky',asset:'Sky Tower · Vacant Floor Acquisition, model v7 (EN)',sector:'Offices',role:'Deal model',repo:'sky-tower',file:'v-e45a65c980ed3fd2.html',first:'2026-09-30',last:'2026-09-30',ver:'Vacant-floor model v7 · Sep 2026',vis:'unlisted',size:'1.3 MB',rec:'Keep',
+ desc:'Full floor bought vacant at 48.0M base (2,087/sq ft), fit-out from completion (Sep 2026), serviced-office trading, sale on a stabilised yield at the 10/10/10/9% cap ladder. Price is a live slider (30-55M).',
+ kpis:[['67.0M','LP equity'],['30.1%','LP IRR'],['1.63x','LP multiple'],['109.3M','LP distributions'],['1.88 yrs','Payback']],
+ note:'Current Sky Tower model. Replaces the tenanted model v6, deleted 30 Sep. Russian twin listed below.'},
+{g:'off-sky',asset:'Sky Tower · Vacant Floor Acquisition, model v7 (RU)',sector:'Offices',role:'Deal model',repo:'sky-tower',file:'v-3af0bd830d4a3984-ru.html',first:'2026-09-30',last:'2026-09-30',ver:'Vacant-floor model v7 · Sep 2026 · Russian',vis:'unlisted',size:'1.3 MB',rec:'Keep',
+ desc:'Russian version of model v7: explanations and notes in Russian, all metrics in English. Same engine and 48M base figures as the English page.',
+ kpis:[['67.0M','LP equity'],['30.1%','LP IRR'],['1.63x','LP multiple'],['109.3M','LP distributions']],
+ note:'For Russian-speaking investors.'},
 {g:'off-sky',asset:'Sky Tower · IC presentation (39 slides)',sector:'Offices',role:'Deck',repo:'sky-tower',file:'ic-314d371c16b2b515.html',first:'2026-08-26',last:'2026-09-11',ver:'v1.0 · Aug 2026',vis:'listed',size:'159 KB',rec:'Update',
  desc:'Investment Committee presentation for a private family office: acquisition and repositioning of the floor at 35.0M (1,522/sq ft), all-equity, 5-year hold. Every projection traces to the monthly model in the appendix. Arrow keys navigate; Ctrl/Cmd+P prints.',
  kpis:[['35.0M','Purchase price'],['52.8M','Total equity'],['20.2%','NOI yield Y2'],['24.9%','Investor IRR'],['2.96x','Multiple']],
@@ -314,7 +318,7 @@ const P=[
  kpis:[['+54.6%','Value created, floor 1'],['609 vs 340','AED/sqft achieved vs shell'],['90.8%','Leased, Emaar Sq B1'],['24.9% / 2.96x','Sky Tower LP base']],
  note:'Document A1 in the data room. Abu Dhabi figures aligned to C&W H1 2026 on 2 Sep. Quotes the 35M Sky Tower case.'},
 {g:'off-market',asset:'Palm & Peak Commercial · Data Room index',sector:'Offices',role:'Data room',repo:'palm-peak',file:'unlisted',first:'2026-08-26',last:'2026-09-02',ver:'Sep 2026',vis:'unlisted',size:'9 KB',rec:'Keep',
- desc:'Index page for the commercial data room: A. Platform (6 docs), Emaar Square track record, C. Sky Tower live transaction (IC deck + model v6), pipeline, SPV structure. Links to 4 GitHub pages and 8 Google Drive files; NDA-only documents removed 2 Sep.',
+ desc:'Index page for the commercial data room: A. Platform (6 docs), Emaar Square track record, C. Sky Tower live transaction (IC deck + model v6; model link now points to a deleted page), pipeline, SPV structure. Links to 4 GitHub pages and 8 Google Drive files; NDA-only documents removed 2 Sep.',
  kpis:[['4','GitHub pages linked'],['8','Drive files linked']],
  note:'The one page to send an investment team. Depends on Drive sharing permissions staying open on those 8 files.'},
 // ---------- CORPORATE ----------
@@ -351,6 +355,7 @@ const TL=[
 ['2026-09-18','sky-tower: head-lease model v4 replaces earlier st-* versions.'],
 ['2026-09-23','al-sufouh-cordoba created; Cordoba Residence model v2.0, last upload 24 Sep.'],
 ['2026-09-26','beach-mansion-1602 created: Beach Mansion T2 1602 JV memorandum (10.5M exit); base hold set to 9 months the same evening.'],
+['2026-09-30','sky-tower: vacant-floor model v7 at 48M live in EN and RU; tenanted model v6 deleted.'],
 ];
 
 function recClass(r){return r==='Keep'?'b-keep':r==='Update'?'b-update':r==='Your call'?'b-decide':'b-drop'}
