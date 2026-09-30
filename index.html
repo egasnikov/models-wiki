@@ -71,6 +71,8 @@ h3{font-family:var(--serif);font-weight:600;font-size:19px;margin:28px 0 10px}
 .tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:14px 0}
 .tools input,.tools select{font:13px var(--sans);padding:7px 10px;border:1px solid var(--line);border-radius:6px;background:var(--panel);color:var(--ink)}
 .tools input{min-width:220px;flex:1}
+.grp td{background:var(--teal-bg);color:var(--navy-2);font:600 12px var(--sans);letter-spacing:.08em;text-transform:uppercase;padding-top:14px}
+.grp td span{font:400 11px var(--mono);letter-spacing:0;text-transform:none;color:var(--ink-3);margin-left:8px}
 .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--panel)}
 table{border-collapse:collapse;width:100%;min-width:1100px;font-size:13px}
 td:first-child{min-width:230px}td:nth-child(8){min-width:150px}
@@ -147,7 +149,7 @@ footer{margin-top:50px;color:var(--ink-3);font-size:12px;font-family:var(--mono)
 
 <section id="index">
   <h2>1 · Master index</h2>
-  <p class="lead">All 31 pages in 29 rows (the duplicate repo is one row). Filter by sector, role or recommendation; click a column header to sort.</p>
+  <p class="lead">Every page, grouped into five blocks: deal models and memos, research and thesis, investor decks and data rooms, investor pages and hubs, and legacy pages to archive. Filter by sector or role; click a column header to sort within each block.</p>
   <div class="tools">
     <input id="q" type="search" placeholder="Search asset, repo, file, figures...">
     <select id="fSector"><option value="">All sectors</option><option>Residential</option><option>Offices</option><option>Corporate</option></select>
@@ -378,12 +380,25 @@ P.forEach(p=>document.querySelector(`[data-group="${p.g}"]`).appendChild(card(p)
 
 // table
 let sortK='last',sortD=-1;
+const BLOCKS=[['deal','Deal models &amp; memoranda','live underwriting, one page per deal'],
+  ['research','Research &amp; thesis','market reports and investment thesis'],
+  ['pack','Investor decks &amp; data rooms','presentations and document indexes'],
+  ['pages','Investor pages &amp; hubs','landing pages, buyer sites, corporate hubs'],
+  ['legacy','Legacy - archive or delete','superseded versions and duplicates']];
+function block(p){
+  if(p.rec==='Archive'||p.rec==='Delete')return 'legacy';
+  if(p.role==='Market report'||/Thesis/.test(p.asset))return 'research';
+  if(p.role==='Deck'||p.role==='Data room')return 'pack';
+  if(p.role==='Deal model'||p.role==='Memorandum'||p.role==='Business plan')return 'deal';
+  return 'pages';
+}
 const tb=document.querySelector('#tbl tbody');
 function render(){
   const q=document.getElementById('q').value.toLowerCase(),s=fSector.value,r=fRole.value;
   let rows=P.map(p=>({...p,headline:p.kpis[0][0]+' '+p.kpis[0][1]})).filter(p=>(!s||p.sector===s)&&(!r||p.role===r)&&(!q||JSON.stringify(p).toLowerCase().includes(q)));
   rows.sort((a,b)=>(a[sortK]>b[sortK]?1:a[sortK]<b[sortK]?-1:0)*sortD);
-  tb.innerHTML=rows.map(p=>`<tr><td><a href="${url(p)}" target="_blank" rel="noopener">${p.asset}</a></td><td>${p.sector}</td><td>${p.role}</td><td class="mono">${p.repo}/<br>${p.file}</td><td class="mono">${p.first}</td><td class="mono">${p.last}</td><td>${p.vis}</td><td>${p.headline}</td></tr>`).join('');
+  const row=p=>`<tr><td><a href="${url(p)}" target="_blank" rel="noopener">${p.asset}</a></td><td>${p.sector}</td><td>${p.role}</td><td class="mono">${p.repo}/<br>${p.file}</td><td class="mono">${p.first}</td><td class="mono">${p.last}</td><td>${p.vis}</td><td>${p.headline}</td></tr>`;
+  tb.innerHTML=BLOCKS.map(([k,t,d])=>{const g=rows.filter(p=>block(p)===k);return g.length?`<tr class="grp"><td colspan="8">${t}<span>${d} · ${g.length}</span></td></tr>`+g.map(row).join(''):''}).join('');
   cnt.textContent=rows.length+' of '+P.length+' pages';
 }
 ['q','fSector','fRole'].forEach(id=>document.getElementById(id).addEventListener('input',render));
