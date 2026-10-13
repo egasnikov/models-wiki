@@ -148,7 +148,7 @@ footer{margin-top:50px;color:var(--ink-3);font-size:12px;font-family:var(--mono)
 
 <section id="index">
   <h2>1 · Master index</h2>
-  <p class="lead">All 31 pages in 29 rows (the duplicate repo is one row). Filter by sector, role or recommendation; click a column header to sort.</p>
+  <p class="lead">All 32 pages in 30 rows (the duplicate repo is one row). Filter by sector, role or recommendation; click a column header to sort.</p>
   <div class="tools">
     <input id="q" type="search" placeholder="Search asset, repo, file, figures...">
     <select id="fSector"><option value="">All sectors</option><option>Residential</option><option>Offices</option><option>Corporate</option></select>
@@ -215,7 +215,7 @@ footer{margin-top:50px;color:var(--ink-3);font-size:12px;font-family:var(--mono)
     <div class="box"><h4><span class="badge b-decide">your call</span> &nbsp;Decisions only you can make</h4><ul>
       <li><b>Alvorada 4</b>: memo dated July, no commits since 9 Jul. If the deal is dead, both copies go and the <code>flipping</code> repo becomes empty and can be deleted. If it is still a live comp / case study, keep the <code>flipping</code> copy only.</li>
       <li><b>hartland-villas (AVRA)</b>: buyer site for the 4-month exclusive mandate (from 13 Jul). Keep live until the mandate ends or the investor pulls it; then archive.</li>
-      <li><b>Public exposure</b>: seven live models show entry prices and seller-side detail (Cordoba land at 1,004M, Jasmine Leaf at 65M vs 80M ask, Sienna at 23M vs 23.8M ask). Fine for illustrative pages; if any of these go under offer, move them to hash filenames or take them down.</li>
+      <li><b>Public exposure</b>: eight live models show entry prices and seller-side detail (Cordoba land at 1,004M, NAS Gardens land at 22M vs 25M ask, Jasmine Leaf at 65M vs 80M ask, Sienna at 23M vs 23.8M ask). Fine for illustrative pages; if any of these go under offer, move them to hash filenames or take them down.</li>
     </ul></div>
   </div>
 
@@ -236,6 +236,7 @@ footer{margin-top:50px;color:var(--ink-3);font-size:12px;font-family:var(--mono)
 ├── sienna-lakes/               Villa 13 Serena memo
 ├── al-sufouh-cordoba/          Cordoba Residence development model v2.0
 ├── beach-mansion-1602/         Beach Mansion T2 1602 JV memo
+├── nas-gardens-g2p6/           NAS Gardens G+2P+6 development model v2.5 (RU)
 └── hartland-villas/            AVRA buyer site (until mandate ends)
 
 removed: st-reem-a7f3k2, palmpeak-site, flipping (if Alvorada is closed)</div>
@@ -259,6 +260,11 @@ const P=[
  kpis:[['1.36M','Gross profit'],['25.1%','Project IRR'],['1.18x','Multiple'],['1.05M','Investor share'],['19.3%','Investor IRR'],['385K','Operator total']],
  note:'Base case hold moved from 6 to 9 months on 26 Sep (at 6 months: 39.9% project IRR). Live page has no photos.',
  advice:'Keep while the JV is live. The page names the investor and shows the JV terms on a public URL; move it to a hash filename if that matters.'},
+{g:'res-live',asset:'Nad Al Sheba Gardens, G+2P+6 apartment plot',sector:'Residential',role:'Deal model',repo:'nas-gardens-g2p6',file:'index.html',first:'2026-10-13',last:'2026-10-13',ver:'Development model v2.5 (RU) · Sep 2026',vis:'orphan',size:'105 KB',rec:'Keep',
+ desc:'Ground-up development on a 14,822 sq ft plot (GFA 45,000 sq ft, ask 25M) with Palm &amp; Peak as developer and off-plan sales through escrow. Base scheme G+5 with 40 on-grade bays and ground-floor retail, switchable to G+2P+6; standard vs compact unit mix; 30% escrow deposit; LP/GP waterfall. Evidence from DLD and Bayut deals in the community and Azizi Riviera. Every slider recomputes the model.',
+ kpis:[['21.2M','Net profit'],['32.5%','Equity IRR'],['34.9M','Peak equity'],['1.61x','Multiple'],['85.4M','GDV'],['22.0M','Land (base)']],
+ note:'Russian edition. Base land 22M against the 25M ask; apartments 2,200/sq ft, retail 2,500; build 15 months. Live page shows the land offer and the 20%-margin land price.',
+ advice:'Keep while underwriting. Move to a hash filename or take down once land negotiations start.'},
 {g:'res-live',asset:'Cordoba Residence, Al Sufouh 2',sector:'Residential',role:'Deal model',repo:'al-sufouh-cordoba',file:'index.html',first:'2026-09-23',last:'2026-09-24',ver:'Underwriting model v2.0 · Sep 2026',vis:'orphan',size:'75 KB',rec:'Keep',
  desc:'Ground-up redevelopment of a 21-acre compound into 46 ultra-luxury estates and a clubhouse. Monthly cash flow with construction programme, absorption, Dubai escrow rules, land and construction debt, and a switchable LP/GP or single-investor structure. Every slider recomputes the model.',
  kpis:[['2,002M','Profit to equity'],['44.1%','Equity IRR'],['924M','Peak equity'],['3.17x','Multiple'],['5,503M','GDV'],['1,004M','Land']],
@@ -444,6 +450,7 @@ const TL=[
 ['2026-09-30','sky-tower: vacant-floor model v7 at 48M live in EN and RU (v-*); tenanted model v6 (m-030…) deleted.'],
 ['2026-10-01','adgm-flex-office: Abu Dhabi office investment thesis deck (th-*, 21 slides, C&W Q2/H1 2026); July thesis page redirected to it.'],
 ['2026-10-09','sky-tower: 750 + 315 sqm (1,065 sqm) head-lease model v1 live at 2,000/sqm, 17.3% / 2.56x.'],
+['2026-10-13','nas-gardens-g2p6 created: Nad Al Sheba Gardens G+2P+6 development model v2.5 (RU), browser-assembled deploy.'],
 ];
 
 function recClass(r){return r==='Keep'?'b-keep':r==='Update'?'b-update':r==='Your call'?'b-decide':'b-drop'}
