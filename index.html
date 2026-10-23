@@ -236,10 +236,11 @@ footer{margin-top:50px;color:var(--ink-3);font-size:12px;font-family:var(--mono)
 ├── sienna-lakes/               Villa 13 Serena memo
 ├── al-sufouh-cordoba/          Cordoba Residence development model v2.0
 ├── beach-mansion-1602/         Beach Mansion T2 1602 JV memo
+├── flipping/jge-villa-flips/   JGE three-villa memo (Flame Tree Ridge, Sienna Lakes, Lime Tree Valley)
 ├── nas-gardens-g2p6/           NAS Gardens G+2P+6 development model v2.5 (RU)
 └── hartland-villas/            AVRA buyer site (until mandate ends)
 
-removed: st-reem-a7f3k2, palmpeak-site, flipping (if Alvorada is closed)</div>
+removed: st-reem-a7f3k2, palmpeak-site (flipping stays: it now hosts jge-villa-flips)</div>
 </section>
 
 <section id="timeline">
@@ -255,6 +256,11 @@ removed: st-reem-a7f3k2, palmpeak-site, flipping (if Alvorada is closed)</div>
 const BASE='https://egasnikov.github.io/';
 const P=[
 // ---------- RESIDENTIAL: live ----------
+{g:'res-live',asset:'JGE villa flips: Flame Tree Ridge, Sienna Lakes, Lime Tree Valley',sector:'Residential',role:'Memorandum',repo:'flipping',file:'jge-villa-flips/index.html',first:'2026-10-23',last:'2026-10-23',ver:'Oct 2026 · 3 villas, villa switcher, LP/GP waterfall',vis:'orphan',size:'1.3 MB',rec:'Keep',
+ desc:'Three Jumeirah Golf Estates buy, renovate, extend (+20% BUA) and resell villas from the Allsopp & Allsopp October pack: Flame Tree Ridge Portrush (20.0M), Sienna Lakes Royale (19.5M), Lime Tree Valley Tarragona (34.5M). One page with a villa switcher, all-equity or 75% senior debt, contingency switch, LP/GP waterfall, sensitivity grid and broker-vs-underwriting bridge. Unbranded, listing photos with broker logos removed.',
+ kpis:[['6.92M','Flame Tree profit'],['23.6%','Flame Tree IRR'],['6.69M','Sienna Lakes profit'],['22.4%','Sienna Lakes IRR'],['15.07M','Lime Tree profit'],['28.7%','Lime Tree IRR']],
+ note:'All-equity base cases, 12-13 month holds. Sienna Lakes extension takes BUA to 110% of plot: GFA approval is the gating item.',
+ advice:'Keep while the three villas are under review. Unbranded, safe to share with the broker or co-investors.'},
 {g:'res-live',asset:'Beach Mansion T2, Unit 1602 (Emaar Beachfront)',sector:'Residential',role:'Memorandum',repo:'beach-mansion-1602',file:'index.html',first:'2026-09-26',last:'2026-09-26',ver:'Sep 2026 · JV waterfall, 9-month hold',vis:'orphan',size:'20 KB',rec:'Keep',
  desc:'3-bed, 2,234 sq ft apartment bought at 7.5M including a 1.5M post-handover payment plan, 850K renovation, exit 10.5M. The investor funds 100% under a JV; six-tier waterfall (10% pref, operator catch-up, 75/25, 70/30, 50/50) tested on invested capital excluding the payment plan. Sliders and exit-versus-hold sensitivity grids recompute live.',
  kpis:[['1.36M','Gross profit'],['25.1%','Project IRR'],['1.18x','Multiple'],['1.05M','Investor share'],['19.3%','Investor IRR'],['385K','Operator total']],
@@ -450,6 +456,7 @@ const TL=[
 ['2026-09-30','sky-tower: vacant-floor model v7 at 48M live in EN and RU (v-*); tenanted model v6 (m-030…) deleted.'],
 ['2026-10-01','adgm-flex-office: Abu Dhabi office investment thesis deck (th-*, 21 slides, C&W Q2/H1 2026); July thesis page redirected to it.'],
 ['2026-10-09','sky-tower: 750 + 315 sqm (1,065 sqm) head-lease model v1 live at 2,000/sqm, 17.3% / 2.56x.'],
+['2026-10-23','flipping/jge-villa-flips: three-villa JGE memorandum live (unbranded, with photos).'],
 ['2026-10-13','nas-gardens-g2p6 created: Nad Al Sheba Gardens G+2P+6 development model v2.5 (RU), browser-assembled deploy.'],
 ];
 
