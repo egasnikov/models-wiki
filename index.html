@@ -237,7 +237,7 @@ footer{margin-top:50px;color:var(--ink-3);font-size:12px;font-family:var(--mono)
 ├── al-sufouh-cordoba/          Cordoba Residence development model v2.0
 ├── beach-mansion-1602/         Beach Mansion T2 1602 JV memo
 ├── flipping/jge-villa-flips/   JGE three-villa memo (Flame Tree Ridge, Sienna Lakes, Lime Tree Valley)
-├── flipping/jge-renovation-villas/ JGE four-villa renovation memo (Lime Tree Valley, Flame Tree Ridge, Wildflower, Sundials)
+├── flipping/jge-renovation-villas/ JGE renovation memo (Flame Tree Ridge, Wildflower)
 ├── flipping/orange-lake-villas/ Orange Lake villa memo (Option One only)
 ├── flipping/orange-lake-villas/ru/ Orange Lake memo, Russian edition
 ├── nas-gardens-g2p6/           NAS Gardens G+2P+6 development model v2.5 (RU)
@@ -259,10 +259,10 @@ removed: st-reem-a7f3k2, palmpeak-site (flipping stays: it now hosts jge-villa-f
 const BASE='https://egasnikov.github.io/';
 const P=[
 // ---------- RESIDENTIAL: live ----------
-{g:'res-live',asset:'JGE renovation villas: Lime Tree Valley, Flame Tree Ridge, Wildflower, Sundials',sector:'Residential',role:'Memorandum',repo:'flipping',file:'jge-renovation-villas/index.html',first:'2026-11-17',last:'2026-11-17',ver:'Nov 2026 · 4 villas, villa switcher, LP/GP waterfall',vis:'orphan',size:'45 KB',rec:'Keep',
- desc:'Four Jumeirah Golf Estates renovation villas: Lime Tree Valley (17.75M, extend to 5,500 sqft), Flame Tree Ridge (20.0M, extend to 8,000 sqft), Wildflower (26.0M, shell and core, approvals paid), Sundials (22.0M, re-plan to 5 bed). One page with a villa switcher, all-equity, contingency switch, LP/GP waterfall, sensitivity grid and max bid. Unbranded, no photos.',
- kpis:[['7.00M','Flame Tree profit'],['21.0%','Flame Tree IRR'],['8.12M','Wildflower profit'],['19.1%','Wildflower IRR'],['3.24M','Sundials profit'],['1.75M','Lime Tree profit']],
- note:'All-equity base cases, contingency off by default, 12-14 month holds. Sundials and Lime Tree Valley only work near their max bids (20.0M / 15.4M). Flame Tree hinges on GFA approval; Wildflower on the fit-out budget.',
+{g:'res-live',asset:'JGE renovation villas: Flame Tree Ridge, Wildflower',sector:'Residential',role:'Memorandum',repo:'flipping',file:'jge-renovation-villas/index.html',first:'2026-11-17',last:'2026-11-17',ver:'Nov 2026 · 2 villas, villa switcher, LP/GP waterfall',vis:'orphan',size:'40 KB',rec:'Keep',
+ desc:'Two Jumeirah Golf Estates renovation villas: Flame Tree Ridge (20.0M, Fire course, extend 5,800 to 8,000 sqft) and Wildflower (26.0M, Earth course, shell and core with BUA approvals paid). Base exit AED 5,000 per sqft of finished BUA. One page with a villa switcher, all-equity, contingency switch (off by default), LP/GP waterfall, sensitivity grid and max bid. Unbranded, no photos.',
+ kpis:[['10.91M','Flame Tree profit'],['32.5%','Flame Tree IRR'],['8.12M','Wildflower profit'],['19.1%','Wildflower IRR']],
+ note:'All-equity base cases, contingency off, 14-month holds. Flame Tree hinges on GFA approval to 8,000 sqft; Wildflower on the AED 8.0M fit-out budget from shell and core.',
  advice:'Keep while under review. Unbranded, safe to share with co-investors.'},
 {g:'res-live',asset:'Orange Lake villa flip, Russian edition (Вилла 1 only)',sector:'Residential',role:'Memorandum (RU)',repo:'flipping',file:'orange-lake-villas/ru/index.html',first:'2026-11-07',last:'2026-11-07',ver:'Nov 2026 · Russian edition, Villa 1 (Option One) only',vis:'orphan',size:'52 KB',rec:'Keep',
  desc:'Russian edition covering Option One only (Option Two dropped as not of interest, 11 Nov 2026). Native investor copy, names in Latin script, Russian number formatting. Same figures, interactive model, waterfall, sensitivity and registered DLD comps as Option One in the English version.',
@@ -486,7 +486,7 @@ const TL=[
 ['2026-10-09','sky-tower: 750 + 315 sqm (1,065 sqm) head-lease model v1 live at 2,000/sqm, 17.3% / 2.56x.'],
 ['2026-10-23','flipping/jge-villa-flips: three-villa JGE memorandum live (unbranded, with photos).'],
 ['2026-10-28','sky-tower: floor 24 operating JV model v1 live (jv-*), landlord priority return + investor fit-out + tiered revenue share.'],
-['2026-11-17','flipping/jge-renovation-villas: four-villa JGE renovation memorandum live (unbranded, no photos).'],
+['2026-11-17','flipping/jge-renovation-villas: JGE renovation memorandum live, Flame Tree Ridge and Wildflower, base exit 5,000/sqft (unbranded, no photos).'],
 ['2026-11-11','flipping/orange-lake-villas: Option Two removed, memo now covers Option One only.'],
 ['2026-11-11','flipping/orange-lake-villas/ru: Russian edition added, Villa 1 (Option One) only.'],
 ['2026-11-04','flipping/orange-lake-villas: Orange Lake two-option memorandum live (registered DLD comps, Option One extended to 5,272 sqft).'],
